@@ -1,0 +1,47 @@
+<div class="alert alert-success alert-dismissible fade show" role="alert" [hidden]="!mensagemSucesso" 
+(click) ="fecharMensagemSucesso">
+    <strong>{{!mensagemSucesso}}</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert" [hidden]="!mensagemErro"
+(click) ="fecharMensagemErro">
+    <strong>{{!mensagemErro}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<h5>Cadastro produtos</h5>
+<br />
+
+
+<form #formCadastro="ngForm" (submit)="cadastrarProduto(formCadastro)">
+    <div clase="row">
+        <div clase="col-md-4">
+
+            <label>Nome do produto:</label>
+            <input type="text" class="form-control" placeholder="Digite aqui" name="nome" ngModel>
+            <div class="text-danger" *ngFor="let mensagem of errosNome">
+                {{mensagem}}
+            </div>
+
+            <br />
+
+            <label>Preco:</label>
+            <input type="text" class="form-control" placeholder="Digite aqui"  name="preco" ngModel>
+            <div class="text-danger" *ngFor="let mensagem of errosPreco">
+                {{mensagem}}
+            </div>
+
+            <br />
+
+            <label>Quantidade:</label>
+            <input type="text" class="form-control" placeholder="Digite aqui"  name="quantidade" ngModel>
+            <div class="text-danger" *ngFor="let mensagem of errosQuantidade ">
+                {{mensagem}}
+            </div>
+
+            <br />
+            <button class="btn btn-success bnt-sm mr-1" type="submit">Cadastrar</button>
+            <button class="btn btn-secondary bnt-sm mr-1" type="reset">Limpar campos</button>
+        </div>
+    </div>
+</form>
